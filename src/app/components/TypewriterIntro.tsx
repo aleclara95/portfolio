@@ -28,7 +28,7 @@ export default function Typewriter({
     <div className="flex flex-col justify-center w-full h-screen text-2xl text-white text-center">
       {skippedIntro ? (
         <div className="h-screen mt-64">
-          <span>Hello! I'm Ale.</span>
+          <span>Hello! I&apos;m Ale.</span>
           <br />
           <span>
             Code <span style={{ color: "rgb(253 186 116)" }}>creator</span> and
@@ -45,7 +45,7 @@ export default function Typewriter({
           className="h-screen mt-64"
           getBeforeInit={(instance) => {
             instance
-              .type("Hello! I'm Ale.")
+              .type("Hello! I&apos;m Ale.")
               .pause(500)
               .type(
                 "</br>Code <span style='color: rgb(253 186 116);'>creator</span> and problem <span style='color: rgb(190 242 100);'>solvr</span>."
