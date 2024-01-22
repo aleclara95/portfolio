@@ -4,9 +4,11 @@ import React, { useState } from "react";
 
 import TypeIt from "typeit-react";
 import { fullpageApi } from "@fullpage/react-fullpage";
-import { BsChevronDown } from "react-icons/bs";
-import { motion } from "framer-motion";
+import Image from "next/image";
+
 import SkipIntro from "./SkipIntro";
+import ScrollArrows from "./ScrollArrows";
+import { motion } from "framer-motion";
 
 export default function Typewriter({
   fullpageApi,
@@ -26,8 +28,24 @@ export default function Typewriter({
 
   return (
     <div className="flex flex-col justify-center w-full h-screen text-2xl text-white text-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{ duration: 3, ease: "easeInOut" }}
+        className="self-center"
+      >
+        <Image
+          src="/image/me_edit.jpg"
+          width={420}
+          height={420}
+          alt="Picture of the author"
+          className="lg:mr-8 p-8 rounded-full"
+        />
+      </motion.div>
       {skippedIntro ? (
-        <div className="h-screen mt-64">
+        <div className="h-screen">
           <span>Hello! I&apos;m Ale.</span>
           <br />
           <span>
@@ -42,7 +60,7 @@ export default function Typewriter({
         </div>
       ) : (
         <TypeIt
-          className="h-screen mt-64"
+          className="h-screen"
           getBeforeInit={(instance) => {
             instance
               .type("Hello! I&apos;m Ale.")
@@ -85,32 +103,7 @@ export default function Typewriter({
             handleEndedTyping();
           }}
         />
-        <div>
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: typingEnded ? 1 : 0,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            <BsChevronDown
-              size={48}
-              className="absolute bottom-0 left-[calc(50%-24px)]"
-            />
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: typingEnded ? 1 : 0,
-            }}
-            transition={{ duration: 1.5, delay: 0.2 }}
-          >
-            <BsChevronDown
-              size={48}
-              className="absolute bottom-3 left-[calc(50%-24px)]"
-            />
-          </motion.span>
-        </div>
+        <ScrollArrows typingEnded={typingEnded} />
       </div>
     </div>
   );

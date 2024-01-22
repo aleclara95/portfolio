@@ -4,6 +4,7 @@ import React from "react";
 
 import TypeIt from "typeit-react";
 import { fullpageApi } from "@fullpage/react-fullpage";
+import ScrollArrows from "./ScrollArrows";
 
 export default function Typewriter({
   fullpageApi,
@@ -67,6 +68,7 @@ export default function Typewriter({
           },
         }}
       />
+      <ScrollArrows typingEnded={true} />
     </div>
   );
 }
